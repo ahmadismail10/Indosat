@@ -35,7 +35,6 @@
         var marker = new google.maps.Marker({
           position: uluru,
           title: "you are here",
-          //icon: 'icons/bts.png',
           map: map
         });
         <?php foreach ($locations as $loc)
@@ -47,7 +46,7 @@
 
             var marker = new google.maps.Marker({
               position: btsposition,
-             //icon: "B:\Proyek\bts.png",
+              icon: 'https://cng.i.lithium.com/html/assets/flat_homeSecAutomation_icon_rgb_blu-30.png?9B8EAC1373F02274582B1097F3DE85AB=1',
               map: map
             });
             <?php
