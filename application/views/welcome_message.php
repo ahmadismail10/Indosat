@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Indosat Website</title>
     <style>
        #map {
         height: 400px;
@@ -34,10 +35,9 @@
         var marker = new google.maps.Marker({
           position: uluru,
           title: "you are here",
-          //icon: 'B:\Proyek\bts.png',
+          //icon: 'icons/bts.png',
           map: map
         });
-        var image = "B:\Proyek\bts.png";
         <?php foreach ($locations as $loc)
         {
             $latitude =  $loc->LAT;
@@ -47,7 +47,7 @@
 
             var marker = new google.maps.Marker({
               position: btsposition,
-              //icon: "B:\Proyek\bts.png",
+             //icon: "B:\Proyek\bts.png",
               map: map
             });
             <?php
