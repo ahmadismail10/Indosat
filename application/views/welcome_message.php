@@ -28,15 +28,39 @@
         getLocation();
         var uluru = {lat: position.coords.latitude, lng: position.coords.longitude};
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
+          zoom: 15,
           center: uluru
         });
         var marker = new google.maps.Marker({
           position: uluru,
+          title: "you are here",
+          //icon: 'B:\Proyek\bts.png',
           map: map
         });
-      }
+        var image = "B:\Proyek\bts.png";
+        <?php foreach ($locations as $loc)
+        {
+            $latitude =  $loc->LAT;
+            $longitude =  $loc->LONG;
+            ?>
+            var btsposition = {lat: <?php echo $latitude; ?>, lng:<?php echo $longitude; ?> };
+
+            var marker = new google.maps.Marker({
+              position: btsposition,
+              //icon: "B:\Proyek\bts.png",
+              map: map
+            });
+            <?php
+        }?>
+      } 
     </script>
+<!--
+    <?php
+      foreach ($locations as $variable){
+        echo $variable->LONG;
+        echo $variable->LAT;
+      }
+    ?> -->
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqLFLF_usEETqFPtMNSAe6ZYjte6T15Rg&callback=initMap">
     </script>
