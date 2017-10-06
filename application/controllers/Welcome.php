@@ -28,4 +28,8 @@ class Welcome extends CI_Controller {
 		$this->data['locations'] = $this->locationsModel->getLocations();
 		$this->load->view('welcome_message', $this->data);
 	}
+	public function detail()
+	{
+		$this->load->view('detail');
+	}
 }
