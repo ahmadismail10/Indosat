@@ -16,6 +16,7 @@
     <div id="map"></div>
     
     <script>
+      var src = 'https://www.google.com/maps/d/u/0/kml?mid=1-JgMj9ZvuWMYdtooNf6ywMu88pk&forcekml=1&cid=mp&cv=TAnNluCihyk.en.';
       var x = document.getElementById("demo");
       function getLocation() {
           if (navigator.geolocation) {
@@ -37,7 +38,12 @@
           title: "you are here",
           map: map
         });
-        <?php foreach ($locations as $loc)
+        var propertyLayer = new google.maps.KmlLayer({
+          url: 'https://www.google.com/maps/d/u/0/kml?mid=1-JgMj9ZvuWMYdtooNf6ywMu88pk&forcekml=1&cid=mp&cv=TAnNluCihyk.en.',
+          map: map
+        });
+        //loadKmlLayer(src,map);
+        /*<?php foreach ($locations as $loc)
         {
             $latitude =  $loc->LAT;
             $longitude =  $loc->LONG;
@@ -50,8 +56,21 @@
               map: map
             });
             <?php
-        }?>
+        }?>*/
       } 
+      function loadKmlLayer(src, map)
+      {
+        var KmlLayer = new google.maps.KmlLayer(src, {
+          suppressInfoWindows: true,
+          preserveViewport: false,
+          map: map
+        });
+        google.maps.event.addListener(kmlLayer, 'click', function(event) {
+        var content = event.featureData.infoWindowHtml;
+        var testimonial = document.getElementById('capture');
+        testimonial.innerHTML = content;
+        });
+      }
     </script>
 <!--
     <?php
