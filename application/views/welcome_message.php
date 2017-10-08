@@ -2,9 +2,9 @@
 <html>
   <head>
     <title>Indosat Website</title>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
     <script src="<?php echo base_url('asset/jquery-3.2.1.slim.js'); ?>"></script>
-    <script src="<?php echo base_url('asset/chartdashboard/js/bootstrap.min.js'); ?>"></script>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/chartdashboard/css/bootstrap.min.css'); ?>">
+    <script src="<?php echo base_url('asset/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
     <style>
        #map {
         height: 350px;
@@ -15,34 +15,51 @@
   <body>
 
     <!--<h3>My Google Maps Demo</h3>-->
-    <div class="row">
-      <div class="col-sm-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
         <div class="block" style="background: #ff0000">
-           hahaha
+            VLR
+            <br>
+              <?php foreach ($vlr as $data)
+                echo $data->vlr. "($data->persentase)";
+                ;?>
+            </br>
+            <?php echo "date : " .$data->tanggal;?>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="block" style="background: #ffff00">
-           hahaha
+           Keterangan 2
         </div>
       </div>
       <div class="col-sm-4">
         <div class="block" style="background: #ffa000">
-           hahaha
+           Keterangan 3
         </div>
       </div>
-    </div>
+      </div>
     <div id="map"></div>
-    <div class="row">
-      <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-6">
         <div class="block" style="background: #ffa000">
-           hahaha
+          5 LOWEST OCCUPANCY SITE (CELLID)
+          <ul>
+            <?php foreach ($occupancy as $data)
+            echo "<li>".$data->CELLID."</li>";?>
+          </ul>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="block" style="background: #ffa000">
-           hahaha
+           5 LOWEST TRANSAKSI OUTLET
+           <ul>
+             <?php foreach ($transaksi as $data)
+            echo "<li>".$data->ORGANIZATION_NAME."</li>";?>
+
+           </ul>
         </div>
+      </div>
       </div>
     </div>
 

@@ -25,7 +25,9 @@ class Welcome extends CI_Controller {
 	 }
 	public function index()
 	{
-		$this->data['locations'] = $this->locationsModel->getLocations();
+		$this->data['transaksi'] = $this->locationsModel->getDataTransaksi();
+		$this->data['occupancy'] = $this->locationsModel->getDataOccupancy();
+		$this->data['vlr'] = $this->locationsModel->getVLR();
 		$this->load->view('welcome_message', $this->data);
 	}
 	public function detail()
