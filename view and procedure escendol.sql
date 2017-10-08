@@ -46,7 +46,9 @@ CREATE OR REPLACE PROCEDURE growth_vlr(IN keyword date)
 			SELECT v.tanggal, v.vlr, v.vlr_sebelumnya, v.persentase, v.keterangan FROM (SELECT MAX(x.vlr) AS max FROM growth_vlr x WHERE MONTH(x.tanggal) = MONTH(keyword) AND YEAR(x.tanggal) = YEAR(keyword)) m, growth_vlr v WHERE MONTH(v.tanggal) = MONTH(keyword) AND YEAR(v.tanggal) = YEAR(keyword) AND v.vlr = m.max;
 		END IF;
 	END$$
-	
+
+--Panggil Procedure--
+--contoh -> call growth_vlr('2017-09-27')
 						
 --Sheet 1 Nomor 5
 SELECT ORGANIZATION_NAME
