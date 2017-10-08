@@ -30,6 +30,7 @@ class Welcome extends CI_Controller {
 	}
 	public function detail()
 	{
-		$this->load->view('detail');
+		$this->data['maxamount'] = $this->locationsModel->getMaxAmount();
+		$this->load->view('detail', $this->data);
 	}
 }

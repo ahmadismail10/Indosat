@@ -9,6 +9,11 @@ class locationsModel extends CI_Model {
   $query = $this->db->get();
   return $query->result();
  }
- 
+
+ function getMaxAmount()
+ {
+ 	$query = $this->db->query("SELECT MAX(AMOUNT_DEBIT) FROM `TRX_OUTLET`");
+ 	return $query->result();
+ }
 }
 ?>

@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Google Analytics Dashboard</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="./fusioncharts/fusioncharts.js"></script>
+<script type="text/javascript" src="./fusioncharts/themes/fusioncharts.theme.zune.js?cacheBust=56"></script>
+<script type="text/javascript" src="./fusioncharts/fusioncharts.jqueryplugin.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">    
+<link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.min.css">  
+<link rel="stylesheet" type="text/css" href="./css/bootstrap-datetimepicker.css">
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+
+
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./js/moment-with-locales.js"></script>
+
+<script type="text/javascript" src="./js/bootstrap-datetimepicker.js"></script>
+
+</head>
+<body>
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 hidden" id="loader">
+           <center>
+              <img src="./imgs/ajax-loader.gif">
+            </center>
+        </div>
+
+        <nav class="navbar navbar-default visible-xs">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+               <button type="button" class="navbar-toggle user-info" data-toggle="collapse" data-target="#useInfo">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>   
+              </button>
+            </div>
+             <div class="collapse navbar-collapse" id="useInfo">
+              <ul class="nav navbar-nav">
+                <li class="text-center">
+                <h2 class="small text-uppercase">Welcome</h2>
+                <img src="imgs/john.png" alt="" width="70" height="70" style="border-radius:50px">
+                <div class="text-uppercase">John Doe</div>
+                </li>
+              </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                  <li ><a href="#dashboard">Dashboard</a></li>
+                  <li class="active"> <a href="#Audience Overview">Audience Overview</a> </li>
+                  <li><a>Acquisition</a></li>
+                  <li><a>Behavior</a></li>
+                  <li><a>Conversions</a></li>                
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <div class="container-fluid">
+          <div class="row content">
+            <div class="col-sm-3 col-md-3 col-lg-2  sidenav hidden-xs clearfix" id="nav">
+             
+              <div data-spy="affix" data-offset-top="0" class="sidenav-container">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <p></p>
+                  </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-5">
+                      <img src="imgs/john.png" alt="" width="70" height="70" style="border-radius:50px">
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-7" style="margin-top:20px">
+                      <div class="small">Welcome,</div>
+                      <div class="text-uppercase">John Doe</div>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <ul class="nav nav-pills nav-stacked">
+                      <li ><a href="#dashboard">Dashboard</a></li>
+                      <li class="active"> <a href="#Audience Overview">Audience Overview</a> </li>
+                      <li><a>Acquisition</a></li>
+                      <li><a>Behavior</a></li>
+                      <li><a>Conversions</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <br>
+
+            </div>
+            <br>
+
+            <div class="col-sm-9 col-md-9 col-lg-10" id="contemt-main">
+              
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" id="dashboard">
+                  <span class="small text-uppercase text-muted">Dashboards</span>
+                  <h1>Audience Overview</h1>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+                  <div class="row">
+                    <div class='col-sm-12 form-inline datetimepickerwrapper'>
+                      <div class="form-group">
+                        <label>From</label>
+                        <div class='input-group date' id='datetimepicker6'>
+
+                          <input type='text' class="form-control" value="01/07/2016" data-provide="datepicker"  />
+                          <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label>To</label>
+                        <div class='input-group date' id='datetimepicker7'>
+
+                          <input type='text' class="form-control" value="1/08/2016" disabled="true" />
+                          <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <hr>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-6">
+
+                        <h5>Users</h5>
+                        <h3>104,037</h3>
+
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <span id="user-chart-container">FusionCharts will render here</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-6">
+
+                        <h5>Page Views</h5>
+                        <h3>424,892</h3>
+                      </div>
+
+                      <div class="col-md-12 col-lg-6">
+                        <span id="page-views-chart-container">FusionCharts will render here</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-6">
+
+                        <h5>Avg. Session Duration</h5>
+                        <h3>00:03:20</h3>
+                      </div>
+
+                      <div class="col-md-12 col-lg-6">
+                        <span id="session-duration-chart-container">FusionCharts will render here</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-3">
+
+
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-6">
+
+                        <h5>Bounce Rate</h5>
+                        <h3>51.46%</h3>
+                      </div>
+
+                      <div class="col-md-12 col-lg-6">
+                        <span id="bounce-rate-chart-container">FusionCharts will render here</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="well"  id="sessions">
+                    <h4>Sessions</h4>
+                    <p><span id="session-chart-container">FusionCharts will render here</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="well">
+                    <h4 >Visitors' Type</h4>
+                    <p><span id="visitor-chart-container">FusionCharts will render here</span></p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="well">
+                    <h4>Gender</h4>
+                    <p><span id="gender-chart-container">FusionCharts will render here</span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="well">
+                    <h4 >Traffic Sources</h4>
+                    <p><span id="traffic-chart-container">FusionCharts will render here</span></p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="well">
+                    <h4>Age Group</h4>
+                    <p><span id="age-chart-container">FusionCharts will render here</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="well">
+                    <h4>Location</h4>
+                    <p><span id="location-chart-container">FusionCharts will render here</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+            <div  class="col-md-12" style="background-color: #f9f9f9 ; text-align: center">
+               <p class="footerText row-fluid" >This application was built using <a href="http://www.fusioncharts.com" target="_blank" title="FusionCharts - Data to delight... in minutes" style="color:black">FusionCharts XT</a>.
+                You are free to reproduce and distribute this dashboard in its original form, without changing any content, whatsoever. © <script type="text/javascript">var d=new Date();document.write(d.getFullYear());</script>, FusionCharts. All rights reserved.</p>
+            </div>
+        </footer> 
+</body>
+
+<script type="text/javascript" src="./js/data.js"></script>  
+<script type="text/javascript" src="./js/dashboard.js"></script>  
+</html>
