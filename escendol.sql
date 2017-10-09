@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS `data_admin`(
 `PASS` varchar(100)
 );
 
+insert into data_admin values('tes','tes');
+
 DROP TABLE IF EXISTS `VLR`;
 CREATE TABLE IF NOT EXISTS `VLR`(
 `TANGGAL` date,
