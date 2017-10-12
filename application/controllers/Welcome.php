@@ -30,9 +30,29 @@ class Welcome extends CI_Controller {
 		$this->data['vlr'] = $this->locationsModel->getVLR();
 		$this->load->view('welcome_message', $this->data);
 	}
-	public function detail()
+	public function detaildaily()
 	{
+		$this->data['dailytraffic'] = $this->locationsModel->getdailyTRAFFIC();
+		$this->data['dailyvlr'] = $this->locationsModel->getdailyVLR();
 		$this->data['maxamount'] = $this->locationsModel->getMaxAmount();
-		$this->load->view('detail', $this->data);
+		$this->load->view('detaildaily', $this->data);
 	}
+
+	public function detailmonthly()
+	{
+		$this->data['dailytraffic'] = $this->locationsModel->getdailyTRAFFIC();
+		$this->data['dailyvlr'] = $this->locationsModel->getdailyVLR();
+		$this->data['maxamount'] = $this->locationsModel->getMaxAmount();
+		$this->load->view('detailmonthly', $this->data);
+	}
+
+	public function detailweekly()
+	{
+		$this->data['dailytraffic'] = $this->locationsModel->getdailyTRAFFIC();
+		$this->data['dailyvlr'] = $this->locationsModel->getdailyVLR();
+		$this->data['maxamount'] = $this->locationsModel->getMaxAmount();
+		$this->load->view('detailweekly', $this->data);
+	}
+
+
 }

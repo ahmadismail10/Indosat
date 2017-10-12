@@ -31,5 +31,15 @@ class locationsModel extends CI_Model {
  	$query = $this->db->query("call growth_vlr('2017-09-27')");
  	return $query->result();
  }
+ function getdailyVLR()
+ {
+ 	$query = $this->db->query("SELECT VLR FROM `VLR` WHERE MICRO_CLUSTER='MC-SURABAYA_1_1' AND MONTH(TANGGAL)=MONTH(9) AND YEAR(TANGGAL)=YEAR(2017) ORDER BY TANGGAL;");
+ 	return $query->result();
+ }
+ function getdailyTRAFFIC()
+ {
+ 	$query = $this->db->query("SELECT TRAFIK FROM `TRAFIK` WHERE MICRO_CLUSTER='MC-SURABAYA_1_1' AND MONTH(TANGGAL)=MONTH(CURRENT_DATE()) AND YEAR(TANGGAL)=YEAR(CURRENT_DATE()) ORDER BY TANGGAL;");
+ 	return $query->result();
+ }
 }
 ?>

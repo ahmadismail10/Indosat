@@ -39,7 +39,7 @@
         </div>
       </div>
       </div>
-    <div id="map"></div>
+    <div id="map" onload="initMap()"></div>
       <div class="row">
         <div class="col-sm-6">
         <div class="block" style="background: #ffa000">
@@ -71,47 +71,62 @@
         preserveViewport: false,
         map:map
       };
-      var x = document.getElementById("demo");
-      function getLocation() {
-          if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(initMap);
-          } else {
-              x.innerHTML = "Geolocation is not supported by this browser.";
-          }
+  
+      function initMap() {
+        
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -7.289895, lng: 112.81520359999999},
+          zoom: 15
+        });
+        var infoWindow = new google.maps.InfoWindow;
+
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            //console.log(pos);
+            map.setCenter(pos);
+            var marker = new google.maps.Marker({
+              position: pos,
+              title: "you are here",
+              map: map
+            });
+            var kmlLayer = new google.maps.KmlLayer({
+              url: kmlUrl,
+              infoWindowHtml:true,
+              map: map,
+              isclick: false
+            });
+            google.maps.event.addListener(kmlLayer, 'click', function(kmlEvent) {
+              lastKmlEvent = kmlEvent;
+                kmlEvent.featureData.infoWindowHtml += (!kmlEvent.featureData.isclick)? 
+                `<br/><form action="<?php echo base_url('Welcome/detaildaily');?>" method="post">
+                <button type="submit" class="btn btn-success btn-sm">Details</button></form>
+                `:"";
+                kmlEvent.featureData.isclick = true;
+            });
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
       }
-      function initMap(position) {
-        //var uluru = {lat: -25.363, lng: 131.044};
-        getLocation(); 
-        console.log(position);
-        var uluru = {lat: position.coords.latitude, lng: position.coords.longitude};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          title: "you are here",
-          map: map
-        });
-        var kmlLayer = new google.maps.KmlLayer({
-          url: kmlUrl,
-          infoWindowHtml:true,
-          map: map,
-          isclick: false
-        });
-        google.maps.event.addListener(kmlLayer, 'click', function(kmlEvent) {
-          lastKmlEvent = kmlEvent;
-            kmlEvent.featureData.infoWindowHtml += (!kmlEvent.featureData.isclick)? '<br/><button onclick="linked()" class="btn btn-success btn-sm">Details</button>':"";
-            kmlEvent.featureData.isclick = true;
-        });
-      }
-      function linked()
-      {
-        window.location = "<?php echo base_url('Welcome/detail');?>";
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
       }
     </script>
-    <script async defer
+    <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqLFLF_usEETqFPtMNSAe6ZYjte6T15Rg&callback=initMap">
     </script>
+    
   </body>
 </html>
